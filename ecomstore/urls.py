@@ -21,10 +21,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('catalog/', include('preview.urls')),
-    re_path(r'^catalog/', home, name='home'),
+    # path('catalog/', include('catalog.urls')),
+    # re_path(r'^catalog/', home, name='home'),
+    re_path(r'^', include('catalog.urls')),
+    re_path(r'^cart/', include('cart.urls')),
 ]
 
+handler404 = 'ecomstore.views.file_not_found_404'
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

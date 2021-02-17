@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'preview',
+    'catalog',
+    'utils',
+    'cart',
+
 ]
 
 MIDDLEWARE = [
@@ -63,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'utils.context_processors.ecomstore',
             ],
         },
     },
@@ -133,3 +138,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+SITE_NAME = 'Modern Musician'
+META_KEYWORDS = 'Music, instruments, music accessories, musician supplies'
+META_DESCRIPTION = 'Modern Musician is an online supplier of instruments, sheet music, and other accessories for musicians'
+
+# MEDIA_URL = STATIC_URL + "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # 'data' is my media folder
+MEDIA_URL = "/media/"
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 90
